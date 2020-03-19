@@ -1,7 +1,7 @@
 /**
  * @author Marco Ramirez 19588
  * @author Edman Cota 19830
- * @authot Oscar De Leon
+ * @authot Oscar De Leon 19298
  * @version 5.2
  * 
  */
