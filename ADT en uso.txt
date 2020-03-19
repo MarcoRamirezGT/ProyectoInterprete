@@ -1,0 +1,1 @@
+El ADT usado en este proyecto fue el ADT de stacks, se uso debido a que nos facilitaba al momento de querer guardar datos y luego recuperarlos cuando necesitabamos. Posterior a ello esta tambien nos brinda listas, la cual es muy usado para separar los argumentos obtenidos.
