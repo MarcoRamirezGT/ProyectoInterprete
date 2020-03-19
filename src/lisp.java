@@ -17,7 +17,8 @@ import java.awt.*;
 import java.awt.event.*;
 
 import java.util.Stack;
-//ADT Stack
+//ADT Stack 
+//
 import java.math.BigInteger;
 
 public class lisp extends Applet implements ActionListener {
@@ -30,13 +31,9 @@ Checkbox  echo_chkbx;
     infinity = 999999999999999999L;
     private String buffer = null;
     private int pos;
-/**
- * 
- */
+    
     private Sexp 
-    /**
-     * 
-     */
+    
     obj_lst = null,
     nil = mk_atom(""), //crea un atom para las listas vacias
     nil2 = mk_atom("nil"), // alterna el nombre de las listas vacias
@@ -88,9 +85,7 @@ Checkbox  echo_chkbx;
     base10_to_2 = mk_atom("base10-to-2"), 
     base2_to_10 = mk_atom("base2-to-10"), 
     define = mk_atom("define"); 
-/**
- * 
- */
+
     private Stack binary_data_stk   = new Stack(); //crea el stack de datos
     /**
      * 
@@ -103,7 +98,9 @@ Checkbox  echo_chkbx;
 /**
  * 
  */
+    
     public void init() {
+    	
 
        evl_button = new Button("Ejecutar");//boton de correr codigo
        evl_button.setBackground(Color.white); 
@@ -150,9 +147,9 @@ Checkbox  echo_chkbx;
 
    /**
     * 
-    * @param x
-    * @param y
-    * @return
+    * @param x, variables a tomar
+    * @param y, variables a tomar
+    * @return los nuevos datos
     */
    private Sexp jn(Sexp x, Sexp y) { //metodo de la clase Sexp
 	   /**
@@ -163,8 +160,8 @@ Checkbox  echo_chkbx;
    }
    /**
     * 
-    * @param x
-    * @return
+    * @param x la cual es String
+    * @return retorna una lista
     */
    private Sexp mk_atom(String x) {//metodo de la clase Sexp
          Sexp o = obj_lst;
@@ -840,5 +837,9 @@ private void out(String xx, String yy) {
        x = "";
   }
 } // end output routine
+
+
+
+
 
 } // end lisp applet

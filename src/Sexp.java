@@ -25,8 +25,8 @@ class Sexp { // clase S-expressions
    private StringBuffer str = null; 
    /**
     * 
-    * @param h
-    * @param t
+    * @param h, head
+    * @param t, title
     */
    public Sexp(Sexp h, Sexp t) { // creacion del primer metodo
       at = false;
@@ -38,7 +38,7 @@ class Sexp { // clase S-expressions
    } // fin
    /**
     * 
-    * @param s
+    * @param s, texto a evaluar
     */
    public Sexp(String s) { // creacion del segundo metodo
       at = true;
@@ -52,7 +52,7 @@ class Sexp { // clase S-expressions
    } //fin
    /**
     * 
-    * @param n
+    * @param n convierte a numero 
     */
    public Sexp(BigInteger n) { //creacion del tercer metodo
       at = true;
@@ -66,18 +66,18 @@ class Sexp { // clase S-expressions
    } // fin
    /**
     * 
-    * @return
+    * @return regresa title y head
     */
    public Sexp two() { return this.tl.hd; }
    /**
     * 
-    * @return
+    * @return, regresa title y head
     */
    public Sexp three() { return this.tl.tl.hd; }
    public Sexp four() { return this.tl.tl.tl.hd; }
    /**
     * 
-    * @return
+    * @return, regrese title y head
     */
    public boolean bad() { // prueba la formula
       if (at) return pname.equals(")");
@@ -85,7 +85,7 @@ class Sexp { // clase S-expressions
    } // fin 
    /**
     * 
-    * @return
+    * @return el texto convetido
     */
    public String toS() { //Convierte S-expresion a String
       str = new StringBuffer();
@@ -96,7 +96,7 @@ class Sexp { // clase S-expressions
    } // toS
    /**
     * 
-    * @param x
+    * @param x, siendo esta la expresion
     */
    private void toS2(Sexp x) { //muestra
       if (x.at && !x.pname.equals("")) { // pname "" is nil !
