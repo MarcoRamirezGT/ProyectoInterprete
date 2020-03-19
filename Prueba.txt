@@ -1,0 +1,90 @@
+define (U p)
+   cadr try no-time-limit 'eval read-exp p
+
+define (U2 p q) [q is a program for U for the free data]
+   cadr try no-time-limit 
+   display cons 'read-exp [run ((read-exp) (' q))]
+           cons cons "' 
+                cons q 
+                nil 
+           nil 
+   p
+
+define pi
+   let (loop k)
+      if = k 0 nil
+      cons read-bit (loop - k 1)
+   (loop eval read-exp
+
+
+(U
+   append bits pi   
+   append bits 12
+          '(0 0 1 1 1 1 1 1 0 0 0 1)
+)
+
+(U
+   append bits rho
+   append bits pi
+   append bits 5
+   append '(1 1 1 1 1)
+   append bits pi
+   append bits 9
+          '(0 0 0 0 0 0 0 0 0)
+)
+
+length bits rho
+
+define (alpha x*)     [x* = minimum-size program for x]
+   length x* 
+
+length bits alpha
+
+(U2 bits alpha bits' + 1 1 )  
+
+(U2 (bits alpha) (bits (' (+ 1 1))))
+
+
+(* 8 (+ 1 (display (size (display (' (+ 1 1)))))))
+
+define gamma
+
+   [read program p bit by bit until we get it all]
+
+   let (loop p)
+      if = success car try no-time-limit 'eval read-exp p
+      [then] p 
+      [else] (loop append p cons read-bit nil)
+
+   let x* (loop nil)         [get x* = program for x]
+   let x run-utm-on x*       [get x from x*]
+   let y                     [get y from x* by running]
+       eval cons 'read-exp   [((read-exp) (' x*))]
+            cons cons "' 
+                 cons x*
+                      nil 
+                 nil 
+
+   [form the pair x, y]
+   cons x cons y nil
+
+
+length bits gamma
+
+length bits delta
+
+append 
+
+   bits delta
+
+append
+
+   [x* = program to calculate x = 2]
+   [[Supposedly x* is smallest possible,]] 
+   [[but this works for ANY x* for x.]]
+
+   bits' + 1 1
+
+   [program to calculate y = x+1 from x*]
+
+   bits' lambda(x*) + 1 run-utm-on x*
