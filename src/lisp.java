@@ -22,6 +22,8 @@ import java.util.Stack;
 import java.math.BigInteger;
 
 public class lisp extends Applet implements ActionListener {
+	public lisp() {
+	}
 
 TextArea  mexp, dspl;
 Button    evl_button, clr_button;
@@ -143,6 +145,48 @@ Checkbox  echo_chkbx;
           dspl.setText("");
           run();
           evl_button.setBackground(Color.white); 
+          
+          Button source2 = (Button) evt.getSource();
+          if(source2.getLabel().equals("Ejecutar")) {
+        	  if(mexp.getText().contains("FIBONACCI")) {
+        		  
+        		  	int previousNumber = 0, nextNumber = 1;
+         			
+	     			String exp = "";
+	     			
+	     			String texto = mexp.getText();
+	     			
+	     			String fib = texto.replaceAll("\\D+","");
+	     			
+	     			int n = Integer.parseInt(fib);
+	     			
+	     			int i=1;
+	     		    while(i <= n)
+	     		    {
+	     		    	exp += Integer.toString(previousNumber);
+	     		        int sum = previousNumber + nextNumber;
+	     		        previousNumber = nextNumber;
+	     		        nextNumber = sum;
+	     		        i++;
+	     		    }
+	     		   dspl.setText(exp);
+        	  }
+        	  
+        	  if(mexp.getText().contains("FTOC")) {
+        		  
+        		  String texto = mexp.getText();
+         			
+         			String farh = texto.replaceAll("\\D+","");
+         			
+         			float temperature = Integer.parseInt(farh);
+             		
+             		temperature = ((temperature - 32)*5)/9;
+             		
+             		dspl.setText(Float.toString(temperature));
+        	  }
+          }
+          
+          
    } // fin actionPerformed
 
    /**
