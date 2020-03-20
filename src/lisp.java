@@ -20,6 +20,8 @@ import java.util.Stack;
 //ADT Stack 
 
 import java.math.BigInteger;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
 
 public class lisp extends Applet implements ActionListener {
 	public lisp() {
@@ -105,21 +107,54 @@ Checkbox  echo_chkbx;
     	
 
        evl_button = new Button("Ejecutar");//boton de correr codigo
+       evl_button.setBounds(289, 5, 70, 23);
        evl_button.setBackground(Color.white); 
        clr_button = new Button("Borrar");//boton de borrar
+       clr_button.setBounds(364, 5, 56, 23);
        clr_button.setBackground(Color.white); 
        echo_chkbx = new Checkbox("Echo");//boton de copiar texto
+       echo_chkbx.setBounds(598, 106, 47, 23);
        echo_chkbx.setBackground(Color.white); 
        mexp = new TextArea("Ingrese S expresiones", 10, 80);
+       mexp.setBounds(13, 33, 580, 170);
        dspl = new TextArea("Traducido", 10, 80);
+       dspl.setBounds(97, 208, 580, 170);
        setFont(new Font("Monospaced", Font.PLAIN, 12));
+       setLayout(null);
        add(evl_button);
        add(clr_button);
        add(mexp);
        add(echo_chkbx);
+       
+       lblOperaciones = new JLabel("Operaciones");
+       lblOperaciones.setHorizontalAlignment(SwingConstants.CENTER);
+       lblOperaciones.setFont(new Font("Tahoma", Font.PLAIN, 20));
+       lblOperaciones.setBounds(246, 426, 219, 30);
+       add(lblOperaciones);
        add(dspl);
        evl_button.addActionListener(this);
        clr_button.addActionListener(this);
+       
+       JLabel lblOperacionesAritmeticas = new JLabel("Operaciones aritmeticas");
+       lblOperacionesAritmeticas.setFont(new Font("Tahoma", Font.PLAIN, 13));
+       lblOperacionesAritmeticas.setBounds(275, 490, 145, 23);
+       add(lblOperacionesAritmeticas);
+       
+       JLabel lbldefunFibonaccin = new JLabel("(DEFUN FIBONACCI (N))");
+       lbldefunFibonaccin.setBounds(275, 520, 145, 23);
+       add(lbldefunFibonaccin);
+       
+       JLabel lbldefunFtoctemp = new JLabel("(DEFUN FTOC (TEMP))");
+       lbldefunFtoctemp.setBounds(275, 554, 145, 23);
+       add(lbldefunFtoctemp);
+       
+       JLabel lbldefunFactorialn = new JLabel("(DEFUN FACTORIAL (N))");
+       lbldefunFactorialn.setBounds(275, 588, 145, 23);
+       add(lbldefunFactorialn);
+       
+       lblLengthBitsXxxx = new JLabel("length bits xxxx");
+       lblLengthBitsXxxx.setBounds(275, 622, 145, 23);
+       add(lblLengthBitsXxxx);
 
          time_err.err = true; // crea error al retornar
          data_err.err = true; // crea error al retornar
@@ -174,7 +209,7 @@ Checkbox  echo_chkbx;
         	  
         	  if(mexp.getText().contains("FTOC")) {
         		  
-        		  String texto = mexp.getText();
+        		  	String texto = mexp.getText();
          			
          			String farh = texto.replaceAll("\\D+","");
          			
@@ -183,6 +218,24 @@ Checkbox  echo_chkbx;
              		temperature = ((temperature - 32)*5)/9;
              		
              		dspl.setText(Float.toString(temperature));
+        	  }
+        	  
+        	  if(mexp.getText().contains("FACTORIAL")) {
+        		  
+        		  String texto = mexp.getText();
+       			
+       				String fact = texto.replaceAll("\\D+","");
+       				
+       				int num = Integer.parseInt(fact);
+        		  
+        		  int i = 1;
+        	        long factorial = 1;
+        	        while(i <= num)
+        	        {
+        	            factorial *= i;
+        	            i++;
+        	        }
+        	        dspl.setText(Long.toString(factorial));
         	  }
           }
           
@@ -731,6 +784,8 @@ private String next_token(String delimiters) { // token from line buffer
  * 
  */
 StringBuffer echo; //usa para acumular en M-expresion
+private JLabel lblOperaciones;
+private JLabel lblLengthBitsXxxx;
 /**
  * 
  */
@@ -881,9 +936,4 @@ private void out(String xx, String yy) {
        x = "";
   }
 } // end output routine
-
-
-
-
-
 } // end lisp applet
